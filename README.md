@@ -23,7 +23,7 @@ This repository contains the data and code supporting several passages in the Bu
 - Further analysis done in `analysis_by_year.py`
 
 ## Final Output Data Description (`region_year_breakdown.csv`)
-- `year`: th year that the hearing date happened
+- `year`: the year that the hearing date happened
 - `region`: the region of the world, mapped from the country
 - `total`: total number of cases for that region/year
 - `detained`: total number of detained cases for that region/year
