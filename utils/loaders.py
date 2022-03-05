@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import pandas as pd
-from cStringIO import StringIO
+from io import StringIO
 import dateutil
 import os, sys
 import warnings
@@ -10,7 +10,7 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 
 BASE_CASE_PATH = os.path.join(HERE, "../data/case-foia/")
 
-warnings.simplefilter(action="ignore", category=pd.io.common.DtypeWarning)
+warnings.simplefilter(action="ignore", category=pd.errors.DtypeWarning)
 warnings.simplefilter(action="ignore", category=UserWarning)
 
 def clean_date(date_string):
@@ -20,7 +20,7 @@ def clean_date(date_string):
         return None
 
 def load_file(file_path, **kwargs):
-    with open(BASE_CASE_PATH + file_path) as f:
+    with open(BASE_CASE_PATH + file_path, encoding='latin1') as f:
         # Remove NULL bytes from raw CSV
         denulled = StringIO(f.read().replace("\x00", "").replace('"', ""))
         dataframe = pd.read_csv(denulled,
